@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Cancer Survival</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Predict Cancer Survival</h1>
+        <form method="POST" action="{% url 'predict_status' %}" class="space-y-4">
+            {% csrf_token %}
+
+            <!-- Age -->
+            <div>
+                <label for="Age" class="block text-gray-700 font-medium mb-1">Age:</label>
+                <input type="number" name="Age" required 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label for="Gender" class="block text-gray-700 font-medium mb-1">Gender:</label>
+                <select name="Gender" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="FEMALE">Female</option>
+                    <option value="MALE">Male</option>
+                </select>
+            </div>
+
+            <!-- Protein Inputs -->
+            <div>
+                <label for="Protein1" class="block text-gray-700 font-medium mb-1">Protein1:</label>
+                <input type="number" name="Protein1" step="any" required 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="Protein2" class="block text-gray-700 font-medium mb-1">Protein2:</label>
+                <input type="number" name="Protein2" step="any" required 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="Protein3" class="block text-gray-700 font-medium mb-1">Protein3:</label>
+                <input type="number" name="Protein3" step="any" required 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="Protein4" class="block text-gray-700 font-medium mb-1">Protein4:</label>
+                <input type="number" name="Protein4" step="any" required 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Tumour Stage -->
+            <div>
+                <label for="Tumour_Stage" class="block text-gray-700 font-medium mb-1">Tumour Stage:</label>
+                <select name="Tumour_Stage" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                </select>
+            </div>
+
+            <!-- Histology -->
+            <div>
+                <label for="Histology" class="block text-gray-700 font-medium mb-1">Histology:</label>
+                <select name="Histology" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Infiltrating Ductal Carcinoma">Infiltrating Ductal Carcinoma</option>
+                    <option value="Infiltrating Lobular Carcinoma">Infiltrating Lobular Carcinoma</option>
+                    <option value="Mucinous Carcinoma">Mucinous Carcinoma</option>
+                </select>
+            </div>
+
+            <!-- ER Status -->
+            <div>
+                <label for="ER_status" class="block text-gray-700 font-medium mb-1">ER status:</label>
+                <select name="ER_status" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+
+            <!-- PR Status -->
+            <div>
+                <label for="PR_status" class="block text-gray-700 font-medium mb-1">PR status:</label>
+                <select name="PR_status" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+
+            <!-- HER2 Status -->
+            <div>
+                <label for="HER2_status" class="block text-gray-700 font-medium mb-1">HER2 status:</label>
+                <select name="HER2_status" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+
+            <!-- Surgery Type -->
+            <div>
+                <label for="Surgery_type" class="block text-gray-700 font-medium mb-1">Surgery Type:</label>
+                <select name="Surgery_type" 
+                    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Lumpectomy">Lumpectomy</option>
+                    <option value="Modified Radical Mastectomy">Modified Radical Mastectomy</option>
+                    <option value="Other">Other</option>
+                    <option value="Simple Mastectomy">Simple Mastectomy</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" 
+                class="w-full bg-blue-500 text-white font-medium py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                Predict
+            </button>
+        </form>
+    </div>
+</body>
+</html>
